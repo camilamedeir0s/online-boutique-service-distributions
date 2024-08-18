@@ -1,0 +1,285 @@
+# Roles.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: null
+  name: serviceweaver-pods-getter
+  namespace: default
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+
+---
+
+# Role Bindings.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: null
+  name: serviceweaver-default-pods-getter
+  namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: serviceweaver-pods-getter
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: default
+
+---
+
+# Configuration
+apiVersion: v1
+data:
+  config.textpb: |
+    namespace:  "default"
+    deployment_id:  "fe04e9b6-8aa5-4c50-a94a-cea1c26a3bae"
+    listeners:  {
+      key:  "boutique"
+      value:  20000
+    }
+    groups:  {
+      key:  "github.com/ServiceWeaver/onlineboutique/adservice/AdService"
+      value:  "frontend"
+    }
+    groups:  {
+      key:  "github.com/ServiceWeaver/onlineboutique/cartservice/CartService"
+      value:  "colocated"
+    }
+    groups:  {
+      key:  "github.com/ServiceWeaver/onlineboutique/cartservice/cartCache"
+      value:  "colocated"
+    }
+    groups:  {
+      key:  "github.com/ServiceWeaver/onlineboutique/checkoutservice/CheckoutService"
+      value:  "colocated"
+    }
+    groups:  {
+      key:  "github.com/ServiceWeaver/onlineboutique/currencyservice/CurrencyService"
+      value:  "colocated"
+    }
+    groups:  {
+      key:  "github.com/ServiceWeaver/onlineboutique/emailservice/EmailService"
+      value:  "colocated"
+    }
+    groups:  {
+      key:  "github.com/ServiceWeaver/onlineboutique/paymentservice/PaymentService"
+      value:  "colocated"
+    }
+    groups:  {
+      key:  "github.com/ServiceWeaver/onlineboutique/productcatalogservice/ProductCatalogService"
+      value:  "frontend"
+    }
+    groups:  {
+      key:  "github.com/ServiceWeaver/onlineboutique/recommendationservice/RecommendationService"
+      value:  "frontend"
+    }
+    groups:  {
+      key:  "github.com/ServiceWeaver/onlineboutique/shippingservice/ShippingService"
+      value:  "frontend"
+    }
+    groups:  {
+      key:  "github.com/ServiceWeaver/weaver/Main"
+      value:  "frontend"
+    }
+    telemetry:  {
+      metrics:  {
+        export_interval:  {
+          seconds:  30
+        }
+      }
+    }
+  weaver.toml: |-
+    [serviceweaver]
+    binary = "./onlineboutique"
+    rollout = "5m"
+
+    [kube]
+    listeners.boutique = {public = true}
+    image = "camilamedeir0s/weaver-onlineboutique"
+kind: ConfigMap
+metadata:
+  annotations:
+    description: This ConfigMap contains config files for app "onlineboutique" version
+      "fe04e9b6".
+  creationTimestamp: null
+  labels:
+    serviceweaver/app: onlineboutique
+    serviceweaver/version: fe04e9b6
+  name: config-fe04e9b6
+  namespace: default
+
+---
+
+# Deployment for group colocated
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    description: This Deployment hosts components github.com/ServiceWeaver/onlineboutique/currencyservice/CurrencyService,
+      github.com/ServiceWeaver/onlineboutique/cartservice/cartCache, github.com/ServiceWeaver/onlineboutique/checkoutservice/CheckoutService,
+      github.com/ServiceWeaver/onlineboutique/emailservice/EmailService, github.com/ServiceWeaver/onlineboutique/paymentservice/PaymentService,
+      github.com/ServiceWeaver/onlineboutique/cartservice/CartService.
+  creationTimestamp: null
+  labels:
+    serviceweaver/app: onlineboutique
+    serviceweaver/version: fe04e9b6
+  name: onlineboutique-colocated-fe04e9b6-65c0c06c
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      serviceweaver/name: onlineboutique-colocated-fe04e9b6-65c0c06c
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        description: This Pod hosts components github.com/ServiceWeaver/onlineboutique/currencyservice/CurrencyService,
+          github.com/ServiceWeaver/onlineboutique/cartservice/cartCache, github.com/ServiceWeaver/onlineboutique/checkoutservice/CheckoutService,
+          github.com/ServiceWeaver/onlineboutique/emailservice/EmailService, github.com/ServiceWeaver/onlineboutique/paymentservice/PaymentService,
+          github.com/ServiceWeaver/onlineboutique/cartservice/CartService.
+      creationTimestamp: null
+      labels:
+        serviceweaver/app: onlineboutique
+        serviceweaver/name: onlineboutique-colocated-fe04e9b6-65c0c06c
+        serviceweaver/version: fe04e9b6
+      namespace: default
+    spec:
+      nodeSelector:
+        name: node2
+      containers:
+      - args:
+        - babysitter
+        - /weaver/weaver.toml
+        - /weaver/config.textpb
+        - github.com/ServiceWeaver/onlineboutique/currencyservice/CurrencyService
+        - github.com/ServiceWeaver/onlineboutique/cartservice/cartCache
+        - github.com/ServiceWeaver/onlineboutique/checkoutservice/CheckoutService
+        - github.com/ServiceWeaver/onlineboutique/emailservice/EmailService
+        - github.com/ServiceWeaver/onlineboutique/paymentservice/PaymentService
+        - github.com/ServiceWeaver/onlineboutique/cartservice/CartService
+        image: docker.io/camilamedeir0s/onlineboutique:fe04e9b6
+        imagePullPolicy: IfNotPresent
+        name: serviceweaver
+        resources: {}
+        stdin: true
+        tty: true
+        volumeMounts:
+        - mountPath: /weaver/weaver.toml
+          name: config
+          subPath: weaver.toml
+        - mountPath: /weaver/config.textpb
+          name: config
+          subPath: config.textpb
+      dnsPolicy: ClusterFirst
+      serviceAccountName: default
+      volumes:
+      - configMap:
+          name: config-fe04e9b6
+        name: config
+status: {}
+
+---
+
+# Listener Service for group frontend
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    description: This Service forwards traffic to the "boutique" listener.
+  creationTimestamp: null
+  labels:
+    serviceweaver/app: onlineboutique
+    serviceweaver/listener: boutique
+    serviceweaver/version: fe04e9b6
+  name: boutique-fe04e9b6
+  namespace: default
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 20000
+  selector:
+    serviceweaver/name: onlineboutique-frontend-fe04e9b6-4153050a
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+
+---
+
+# Deployment for group frontend
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    description: This Deployment hosts components github.com/ServiceWeaver/onlineboutique/recommendationservice/RecommendationService,
+      github.com/ServiceWeaver/onlineboutique/adservice/AdService, github.com/ServiceWeaver/onlineboutique/productcatalogservice/ProductCatalogService,
+      github.com/ServiceWeaver/onlineboutique/shippingservice/ShippingService, github.com/ServiceWeaver/weaver/Main.
+  creationTimestamp: null
+  labels:
+    serviceweaver/app: onlineboutique
+    serviceweaver/version: fe04e9b6
+  name: onlineboutique-frontend-fe04e9b6-4153050a
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      serviceweaver/name: onlineboutique-frontend-fe04e9b6-4153050a
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        description: This Pod hosts components github.com/ServiceWeaver/onlineboutique/recommendationservice/RecommendationService,
+          github.com/ServiceWeaver/onlineboutique/adservice/AdService, github.com/ServiceWeaver/onlineboutique/productcatalogservice/ProductCatalogService,
+          github.com/ServiceWeaver/onlineboutique/shippingservice/ShippingService,
+          github.com/ServiceWeaver/weaver/Main.
+      creationTimestamp: null
+      labels:
+        serviceweaver/app: onlineboutique
+        serviceweaver/name: onlineboutique-frontend-fe04e9b6-4153050a
+        serviceweaver/version: fe04e9b6
+      namespace: default
+    spec:
+      nodeSelector:
+        name: node1
+      containers:
+      - args:
+        - babysitter
+        - /weaver/weaver.toml
+        - /weaver/config.textpb
+        - github.com/ServiceWeaver/onlineboutique/recommendationservice/RecommendationService
+        - github.com/ServiceWeaver/onlineboutique/adservice/AdService
+        - github.com/ServiceWeaver/onlineboutique/productcatalogservice/ProductCatalogService
+        - github.com/ServiceWeaver/onlineboutique/shippingservice/ShippingService
+        - github.com/ServiceWeaver/weaver/Main
+        image: docker.io/camilamedeir0s/onlineboutique:fe04e9b6
+        imagePullPolicy: IfNotPresent
+        name: serviceweaver
+        ports:
+        - containerPort: 20000
+          name: boutique
+        resources: {}
+        stdin: true
+        tty: true
+        volumeMounts:
+        - mountPath: /weaver/weaver.toml
+          name: config
+          subPath: weaver.toml
+        - mountPath: /weaver/config.textpb
+          name: config
+          subPath: config.textpb
+      dnsPolicy: ClusterFirst
+      serviceAccountName: default
+      volumes:
+      - configMap:
+          name: config-fe04e9b6
+        name: config
+status: {}
+

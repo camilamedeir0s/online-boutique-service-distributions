@@ -1,0 +1,19 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: Schedule
+metadata:
+  name: pod-kill-schedule
+  namespace: chaos-mesh
+spec:
+  schedule: '@every 10s' # '*/1 * * * *'
+  historyLimit: 2
+  concurrencyPolicy: 'Allow'
+  type: 'PodChaos'
+  podChaos:
+    action: pod-kill
+    mode: one
+    selector:
+      namespaces:
+        - default  # Substitua pelo namespace da sua aplicação
+      labelSelectors:
+        "serviceweaver/app": "onlineboutique"   # Substitua pelo label da sua aplicação
+   # duration: '30s'  # Duração do caos (ajuste conforme necessário)
