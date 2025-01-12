@@ -1,0 +1,13 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: PodChaos
+metadata:
+  name: pod-failure-example
+  namespace: default
+spec:
+  action: pod-failure
+  mode: one
+  selector:
+    pods:
+      default:
+      - onlineboutique-frontend-fe04e9b6-4153050a-5d6775f8c8-kclb5 # Substitua pelo nome exato do pod
+  duration: "5s"
