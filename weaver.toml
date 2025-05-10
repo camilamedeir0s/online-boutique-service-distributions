@@ -1,0 +1,3 @@
+[serviceweaver]
+binary = "./onlineboutique"
+rollout = "5m"
