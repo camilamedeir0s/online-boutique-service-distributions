@@ -206,7 +206,13 @@ spec:
         ports:
         - containerPort: 20000
           name: boutique
-        resources: {}
+        resources:
+          requests:
+            memory: "1500Mi"
+            cpu: "1500m"
+          limits:
+            memory: "3300Mi"
+            cpu: "3300m"
         stdin: true
         tty: true
         volumeMounts:
