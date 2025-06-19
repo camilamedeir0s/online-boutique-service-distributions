@@ -153,7 +153,13 @@ spec:
         image: docker.io/camilamedeir0s/onlineboutique:6b5d4c6a
         imagePullPolicy: IfNotPresent
         name: serviceweaver
-        resources: {}
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "150m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
         stdin: true
         tty: true
         volumeMounts:
@@ -212,7 +218,13 @@ spec:
         image: docker.io/camilamedeir0s/onlineboutique:6b5d4c6a
         imagePullPolicy: IfNotPresent
         name: serviceweaver
-        resources: {}
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "150m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
         stdin: true
         tty: true
         volumeMounts:
@@ -271,7 +283,13 @@ spec:
         image: docker.io/camilamedeir0s/onlineboutique:6b5d4c6a
         imagePullPolicy: IfNotPresent
         name: serviceweaver
-        resources: {}
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "150m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
         stdin: true
         tty: true
         volumeMounts:
@@ -330,7 +348,13 @@ spec:
         image: docker.io/camilamedeir0s/onlineboutique:6b5d4c6a
         imagePullPolicy: IfNotPresent
         name: serviceweaver
-        resources: {}
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "150m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
         stdin: true
         tty: true
         volumeMounts:
@@ -389,7 +413,13 @@ spec:
         image: docker.io/camilamedeir0s/onlineboutique:6b5d4c6a
         imagePullPolicy: IfNotPresent
         name: serviceweaver
-        resources: {}
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "150m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
         stdin: true
         tty: true
         volumeMounts:
@@ -448,7 +478,13 @@ spec:
         image: docker.io/camilamedeir0s/onlineboutique:6b5d4c6a
         imagePullPolicy: IfNotPresent
         name: serviceweaver
-        resources: {}
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "150m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
         stdin: true
         tty: true
         volumeMounts:
@@ -507,7 +543,13 @@ spec:
         image: docker.io/camilamedeir0s/onlineboutique:6b5d4c6a
         imagePullPolicy: IfNotPresent
         name: serviceweaver
-        resources: {}
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "150m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
         stdin: true
         tty: true
         volumeMounts:
@@ -595,7 +637,13 @@ spec:
         ports:
         - containerPort: 20000
           name: boutique
-        resources: {}
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "150m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
         stdin: true
         tty: true
         volumeMounts:
@@ -654,7 +702,13 @@ spec:
         image: docker.io/camilamedeir0s/onlineboutique:6b5d4c6a
         imagePullPolicy: IfNotPresent
         name: serviceweaver
-        resources: {}
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "150m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
         stdin: true
         tty: true
         volumeMounts:
@@ -713,7 +767,13 @@ spec:
         image: docker.io/camilamedeir0s/onlineboutique:6b5d4c6a
         imagePullPolicy: IfNotPresent
         name: serviceweaver
-        resources: {}
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "150m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
         stdin: true
         tty: true
         volumeMounts:
@@ -772,7 +832,13 @@ spec:
         image: docker.io/camilamedeir0s/onlineboutique:6b5d4c6a
         imagePullPolicy: IfNotPresent
         name: serviceweaver
-        resources: {}
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "150m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
         stdin: true
         tty: true
         volumeMounts:

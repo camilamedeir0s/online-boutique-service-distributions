@@ -1,0 +1,21 @@
+appConfig: weaver.toml
+repo: docker.io/camilamedeir0s
+
+listeners:
+  - name: boutique
+    public: true
+
+groups:
+- name: colocated
+  components:
+  - github.com/ServiceWeaver/weaver/Main
+  - github.com/ServiceWeaver/onlineboutique/shippingservice/ShippingService
+  - github.com/ServiceWeaver/onlineboutique/recommendationservice/RecommendationService
+  - github.com/ServiceWeaver/onlineboutique/checkoutservice/CheckoutService
+  - github.com/ServiceWeaver/onlineboutique/currencyservice/CurrencyService
+  - github.com/ServiceWeaver/onlineboutique/productcatalogservice/ProductCatalogService
+  - github.com/ServiceWeaver/onlineboutique/CartService
+  - github.com/ServiceWeaver/onlineboutique/EmailService
+  - github.com/ServiceWeaver/onlineboutique/adservice/AdService
+  - github.com/ServiceWeaver/onlineboutique/cartservice/cartCache
+  - github.com/ServiceWeaver/onlineboutique/paymentservice/PaymentService

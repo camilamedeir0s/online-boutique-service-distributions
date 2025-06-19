@@ -208,11 +208,11 @@ spec:
           name: boutique
         resources:
           requests:
-            memory: "1500Mi"
-            cpu: "1500m"
+            memory: "200Mi"
+            cpu: "150m"
           limits:
-            memory: "3300Mi"
-            cpu: "3300m"
+            memory: "500Mi"
+            cpu: "500m"
         stdin: true
         tty: true
         volumeMounts:
