@@ -1,0 +1,56 @@
+resources:
+  - front-recom-product-ad_co-cart-paym-shipp-curr-email.yaml
+
+patches:
+  - target:
+      kind: HorizontalPodAutoscaler
+    patch: |
+      $patch: delete
+      apiVersion: autoscaling/v2
+      kind: HorizontalPodAutoscaler
+      metadata:
+        name: dummy
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-front-recom-product-ad-de1fe61d-f8aa04b7
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-front-recom-product-ad-de1fe61d-f8aa04b7
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "1500m"
+                    memory: "2090Mi"
+                  requests:
+                    cpu: "1500m"
+                    memory: "2090Mi"
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-co-cart-paym-shipp-curr-email-de1fe61d-2542fe42
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-co-cart-paym-shipp-curr-email-de1fe61d-2542fe42
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "1000m"
+                    memory: "1140Mi"
+                  requests:
+                    cpu: "1000m"
+                    memory: "1140Mi"
