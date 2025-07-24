@@ -1,0 +1,78 @@
+resources:
+  - kube_4199a37d.yaml
+
+patches:
+  - target:
+      kind: HorizontalPodAutoscaler
+    patch: |
+      $patch: delete
+      apiVersion: autoscaling/v2
+      kind: HorizontalPodAutoscaler
+      metadata:
+        name: dummy
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-checkout-4199a37d-e766c815
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-checkout-4199a37d-e766c815
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "90m"
+                    memory: "90Mi"
+                  requests:
+                    cpu: "90m"
+                    memory: "90Mi"
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-weaver-main-4199a37d-74028a4f
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-weaver-main-4199a37d-74028a4f
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "1500m"
+                    memory: "1500Mi"
+                  requests:
+                    cpu: "1500m"
+                    memory: "1500Mi"
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-services-4199a37d-8675b183
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-services-4199a37d-8675b183
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "1410m"
+                    memory: "1410Mi"
+                  requests:
+                    cpu: "1410m"
+                    memory: "1410Mi"

@@ -1,5 +1,5 @@
 resources:
-  - front-recom-product-ad_co-cart-paym-shipp-curr-email.yaml
+  - kube_f43e7fba.yaml
 
 patches:
   - target:
@@ -13,12 +13,12 @@ patches:
 
   - target:
       kind: Deployment
-      name: onlineboutique-front-recom-product-ad-de1fe61d-f8aa04b7
+      name: onlineboutique-front-services-f43e7fba-7c1e32ac
     patch: |
       apiVersion: apps/v1
       kind: Deployment
       metadata:
-        name: onlineboutique-front-recom-product-ad-de1fe61d-f8aa04b7
+        name: onlineboutique-front-services-f43e7fba-7c1e32ac
       spec:
         template:
           spec:
@@ -27,20 +27,20 @@ patches:
                 $patch: merge
                 resources:
                   limits:
-                    cpu: "2100m"
-                    memory: "2100Mi"
+                    cpu: "2360m"
+                    memory: "2370Mi"
                   requests:
-                    cpu: "2100m"
-                    memory: "2100Mi"
+                    cpu: "2360m"
+                    memory: "2370Mi"
 
   - target:
       kind: Deployment
-      name: onlineboutique-co-cart-paym-shipp-curr-email-de1fe61d-2542fe42
+      name: onlineboutique-services-f43e7fba-d8073154
     patch: |
       apiVersion: apps/v1
       kind: Deployment
       metadata:
-        name: onlineboutique-co-cart-paym-shipp-curr-email-de1fe61d-2542fe42
+        name: onlineboutique-services-f43e7fba-d8073154
       spec:
         template:
           spec:
@@ -49,8 +49,8 @@ patches:
                 $patch: merge
                 resources:
                   limits:
-                    cpu: "900m"
-                    memory: "900Mi"
+                    cpu: "630m"
+                    memory: "630Mi"
                   requests:
-                    cpu: "900m"
-                    memory: "900Mi"
+                    cpu: "630m"
+                    memory: "630Mi"
