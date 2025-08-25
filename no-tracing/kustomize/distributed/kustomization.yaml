@@ -27,11 +27,11 @@ patches:
                 $patch: merge
                 resources:
                   limits:
-                    cpu: "150m"
-                    memory: "150Mi"
+                    cpu: "117m"
+                    memory: "117Mi"
                   requests:
-                    cpu: "150m"
-                    memory: "150Mi"
+                    cpu: "117m"
+                    memory: "117Mi"
 
   - target:
       kind: Deployment
@@ -49,11 +49,11 @@ patches:
                 $patch: merge
                 resources:
                   limits:
-                    cpu: "320m"
-                    memory: "320Mi"
+                    cpu: "195m"
+                    memory: "195Mi"
                   requests:
-                    cpu: "320m"
-                    memory: "320Mi"
+                    cpu: "195m"
+                    memory: "195Mi"
 
   - target:
       kind: Deployment
@@ -71,11 +71,11 @@ patches:
                 $patch: merge
                 resources:
                   limits:
-                    cpu: "90m"
-                    memory: "90Mi"
+                    cpu: "75m"
+                    memory: "75Mi"
                   requests:
-                    cpu: "90m"
-                    memory: "90Mi"
+                    cpu: "75m"
+                    memory: "75Mi"
 
   - target:
       kind: Deployment
@@ -93,11 +93,11 @@ patches:
                 $patch: merge
                 resources:
                   limits:
-                    cpu: "270m"
-                    memory: "270Mi"
+                    cpu: "173m"
+                    memory: "173Mi"
                   requests:
-                    cpu: "270m"
-                    memory: "270Mi"
+                    cpu: "173m"
+                    memory: "173Mi"
 
   - target:
       kind: Deployment
@@ -137,11 +137,11 @@ patches:
                 $patch: merge
                 resources:
                   limits:
-                    cpu: "1500m"
-                    memory: "1500Mi"
+                    cpu: "950m"
+                    memory: "950Mi"
                   requests:
-                    cpu: "1500m"
-                    memory: "1500Mi"
+                    cpu: "950m"
+                    memory: "950Mi"
 
   - target:
       kind: Deployment
@@ -159,11 +159,11 @@ patches:
                 $patch: merge
                 resources:
                   limits:
-                    cpu: "40m"
-                    memory: "40Mi"
+                    cpu: "35m"
+                    memory: "35Mi"
                   requests:
-                    cpu: "40m"
-                    memory: "40Mi"
+                    cpu: "35m"
+                    memory: "35Mi"
 
   - target:
       kind: Deployment
@@ -181,11 +181,11 @@ patches:
                 $patch: merge
                 resources:
                   limits:
-                    cpu: "280m"
-                    memory: "280Mi"
+                    cpu: "173m"
+                    memory: "173Mi"
                   requests:
-                    cpu: "280m"
-                    memory: "280Mi"
+                    cpu: "173m"
+                    memory: "173Mi"
 
   - target:
       kind: Deployment
@@ -203,11 +203,11 @@ patches:
                 $patch: merge
                 resources:
                   limits:
-                    cpu: "170m"
-                    memory: "170Mi"
+                    cpu: "117m"
+                    memory: "117Mi"
                   requests:
-                    cpu: "170m"
-                    memory: "170Mi"
+                    cpu: "117m"
+                    memory: "117Mi"
 
   - target:
       kind: Deployment
@@ -225,8 +225,8 @@ patches:
                 $patch: merge
                 resources:
                   limits:
-                    cpu: "130m"
-                    memory: "130Mi"
+                    cpu: "115m"
+                    memory: "115Mi"
                   requests:
-                    cpu: "130m"
-                    memory: "130Mi"
+                    cpu: "115m"
+                    memory: "115Mi"

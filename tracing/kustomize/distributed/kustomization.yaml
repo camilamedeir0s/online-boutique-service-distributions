@@ -1,0 +1,232 @@
+resources:
+  - d-distributed.yaml
+
+patches:
+  - target:
+      kind: HorizontalPodAutoscaler
+    patch: |
+      $patch: delete
+      apiVersion: autoscaling/v2
+      kind: HorizontalPodAutoscaler
+      metadata:
+        name: dummy
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-adservice-689dca4e-22f879f4
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-adservice-689dca4e-22f879f4
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "117m"
+                    memory: "117Mi"
+                  requests:
+                    cpu: "117m"
+                    memory: "117Mi"
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-cart-689dca4e-b5f02926
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-cart-689dca4e-b5f02926
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "195m"
+                    memory: "195Mi"
+                  requests:
+                    cpu: "195m"
+                    memory: "195Mi"
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-checkoutservice-689dca4e-8ccb69d9
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-checkoutservice-689dca4e-8ccb69d9
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "75m"
+                    memory: "75Mi"
+                  requests:
+                    cpu: "75m"
+                    memory: "75Mi"
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-currencyservice-689dca4e-77cbbea4
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-currencyservice-689dca4e-77cbbea4
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "173m"
+                    memory: "173Mi"
+                  requests:
+                    cpu: "173m"
+                    memory: "173Mi"
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-emailservice-689dca4e-cb1532f8
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-emailservice-689dca4e-470e90da
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "50m"
+                    memory: "50Mi"
+                  requests:
+                    cpu: "50m"
+                    memory: "50Mi"
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-main-689dca4e-088d101a
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-main-689dca4e-088d101a
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "950m"
+                    memory: "950Mi"
+                  requests:
+                    cpu: "950m"
+                    memory: "950Mi"
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-paymentservice-689dca4e-581fb830
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-paymentservice-689dca4e-581fb830
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "35m"
+                    memory: "35Mi"
+                  requests:
+                    cpu: "35m"
+                    memory: "35Mi"
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-productcatalogservice-689dca4e-4b5641d8
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-productcatalogservice-689dca4e-4b5641d8
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "173m"
+                    memory: "173Mi"
+                  requests:
+                    cpu: "173m"
+                    memory: "173Mi"
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-recommendationservice-689dca4e-344b13d3
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-recommendationservice-689dca4e-344b13d3
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "117m"
+                    memory: "117Mi"
+                  requests:
+                    cpu: "117m"
+                    memory: "117Mi"
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-shippingservice-689dca4e-7a7223c0
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-shippingservice-689dca4e-7a7223c0
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "115m"
+                    memory: "115Mi"
+                  requests:
+                    cpu: "115m"
+                    memory: "115Mi"

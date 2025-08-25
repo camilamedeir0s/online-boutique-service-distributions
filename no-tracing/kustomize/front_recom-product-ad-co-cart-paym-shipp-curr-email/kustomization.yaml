@@ -1,0 +1,56 @@
+resources:
+  - front_services.yaml
+
+patches:
+  - target:
+      kind: HorizontalPodAutoscaler
+    patch: |
+      $patch: delete
+      apiVersion: autoscaling/v2
+      kind: HorizontalPodAutoscaler
+      metadata:
+        name: dummy
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-front-b0019f69-420cfb4f
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-front-b0019f69-420cfb4f
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "950m"
+                    memory: "950Mi"
+                  requests:
+                    cpu: "950m"
+                    memory: "950Mi"
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-services-b0019f69-6c999cb7
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-services-b0019f69-6c999cb7
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "1050m"
+                    memory: "1050Mi"
+                  requests:
+                    cpu: "1050m"
+                    memory: "1050Mi"

@@ -1,5 +1,5 @@
 resources:
-  - kube_f43e7fba.yaml
+  - kube_b4fb5380.yaml
 
 patches:
   - target:
@@ -13,12 +13,12 @@ patches:
 
   - target:
       kind: Deployment
-      name: onlineboutique-front-services-f43e7fba-7c1e32ac
+      name: onlineboutique-cart-pc-curr-email-co-pay-shi-b4fb5380-51666f37
     patch: |
       apiVersion: apps/v1
       kind: Deployment
       metadata:
-        name: onlineboutique-front-services-f43e7fba-7c1e32ac
+        name: onlineboutique-cart-pc-curr-email-co-pay-shi-b4fb5380-51666f37
       spec:
         template:
           spec:
@@ -27,20 +27,20 @@ patches:
                 $patch: merge
                 resources:
                   limits:
-                    cpu: "2360m"
-                    memory: "2370Mi"
+                    cpu: "816m"
+                    memory: "816Mi"
                   requests:
-                    cpu: "2360m"
-                    memory: "2370Mi"
+                    cpu: "816m"
+                    memory: "816Mi"
 
   - target:
       kind: Deployment
-      name: onlineboutique-services-f43e7fba-d8073154
+      name: onlineboutique-main-recom-ad-b4fb5380-40cd1d24
     patch: |
       apiVersion: apps/v1
       kind: Deployment
       metadata:
-        name: onlineboutique-services-f43e7fba-d8073154
+        name: onlineboutique-main-recom-ad-b4fb5380-40cd1d24
       spec:
         template:
           spec:
@@ -49,8 +49,8 @@ patches:
                 $patch: merge
                 resources:
                   limits:
-                    cpu: "630m"
-                    memory: "630Mi"
+                    cpu: "1184m"
+                    memory: "1184Mi"
                   requests:
-                    cpu: "630m"
-                    memory: "630Mi"
+                    cpu: "1184m"
+                    memory: "1184Mi"
