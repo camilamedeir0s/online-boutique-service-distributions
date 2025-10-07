@@ -1,0 +1,78 @@
+resources:
+  - kube_b6930f0f.yaml
+
+patches:
+  - target:
+      kind: HorizontalPodAutoscaler
+    patch: |
+      $patch: delete
+      apiVersion: autoscaling/v2
+      kind: HorizontalPodAutoscaler
+      metadata:
+        name: dummy
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-cart-ad-curr-email-co-pay-shi-b6930f0f-302b9a9d
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-cart-ad-curr-email-co-pay-shi-b6930f0f-302b9a9d
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "760m"
+                    memory: "760Mi"
+                  requests:
+                    cpu: "760m"
+                    memory: "760Mi"
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-main-b6930f0f-78656a8b
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-main-b6930f0f-78656a8b
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "950m"
+                    memory: "950Mi"
+                  requests:
+                    cpu: "950m"
+                    memory: "950Mi"
+
+  - target:
+      kind: Deployment
+      name: onlineboutique-recom-pc-b6930f0f-9789803d
+    patch: |
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: onlineboutique-recom-pc-b6930f0f-9789803d
+      spec:
+        template:
+          spec:
+            containers:
+              - name: serviceweaver
+                $patch: merge
+                resources:
+                  limits:
+                    cpu: "290m"
+                    memory: "290Mi"
+                  requests:
+                    cpu: "290m"
+                    memory: "290Mi"
