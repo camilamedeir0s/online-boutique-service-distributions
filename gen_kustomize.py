@@ -5,7 +5,7 @@ import sys
 import yaml
 from typing import List, Dict, Any
 
-#python3 gen_kustomize.py ./kube_1e4a7c4c.yaml ./kustomization.yaml
+#python3 gen_kustomize.py ./kube_5e425380.yaml ./kustomization.yaml
 
 # --- Literal block helper so Kustomize patches are written with `|`
 class LiteralStr(str):

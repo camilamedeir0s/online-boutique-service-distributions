@@ -1,0 +1,53 @@
+resources:
+- kube_d1c96116.yaml
+patches:
+- target:
+    kind: HorizontalPodAutoscaler
+  patch: |
+    $patch: delete
+    apiVersion: autoscaling/v2
+    kind: HorizontalPodAutoscaler
+    metadata:
+      name: dummy
+- target:
+    kind: Deployment
+    name: onlineboutique-main-rec-ad-d1c96116-a3ac972f
+  patch: |
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: onlineboutique-main-rec-ad-d1c96116-a3ac972f
+    spec:
+      template:
+        spec:
+          containers:
+            - name: serviceweaver
+              $patch: merge
+              resources:
+                limits:
+                  cpu: "1184m"
+                  memory: "1184Mi"
+                requests:
+                  cpu: "1184m"
+                  memory: "1184Mi"
+- target:
+    kind: Deployment
+    name: onlineboutique-pay-ct-em-sh-co-cur-pc-d1c96116-3765e88c
+  patch: |
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: onlineboutique-pay-ct-em-sh-co-cur-pc-d1c96116-3765e88c
+    spec:
+      template:
+        spec:
+          containers:
+            - name: serviceweaver
+              $patch: merge
+              resources:
+                limits:
+                  cpu: "816m"
+                  memory: "816Mi"
+                requests:
+                  cpu: "816m"
+                  memory: "816Mi"
