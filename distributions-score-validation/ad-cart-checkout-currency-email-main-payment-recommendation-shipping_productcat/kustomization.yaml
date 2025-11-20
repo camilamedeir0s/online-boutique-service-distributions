@@ -11,12 +11,12 @@ patches:
       name: dummy
 - target:
     kind: Deployment
-    name: onlineboutique-ad-ct-co-cur-em-main-pay-rec-sh-e8df9de0-f03240ce
+    name: onlineboutique-ad-ct-co-cur-em-main-pay-re-sh-618477ab-e71b85a2
   patch: |
     apiVersion: apps/v1
     kind: Deployment
     metadata:
-      name: onlineboutique-ad-ct-co-cur-em-main-pay-rec-sh-e8df9de0-f03240ce
+      name: onlineboutique-ad-ct-co-cur-em-main-pay-re-sh-618477ab-e71b85a2
     spec:
       template:
         spec:
@@ -25,19 +25,19 @@ patches:
               $patch: merge
               resources:
                 limits:
-                  cpu: "1827m"
-                  memory: "1827Mi"
+                  cpu: "1710m"
+                  memory: "1710Mi"
                 requests:
-                  cpu: "1827m"
-                  memory: "1827Mi"
+                  cpu: "1710m"
+                  memory: "1710Mi"
 - target:
     kind: Deployment
-    name: onlineboutique-pc-e8df9de0-d07d09ff
+    name: onlineboutique-pc-618477ab-0a85caf1
   patch: |
     apiVersion: apps/v1
     kind: Deployment
     metadata:
-      name: onlineboutique-pc-e8df9de0-d07d09ff
+      name: onlineboutique-pc-618477ab-0a85caf1
     spec:
       template:
         spec:

@@ -2,19 +2,19 @@
 # application:
 #
 #     app: onlineboutique
-#     version: e8df9de0
+#     version: 618477ab
 #     components groups:
 #     - 
-#       - github.com/ServiceWeaver/onlineboutique/recommendationservice/RecommendationService
-#       - github.com/ServiceWeaver/onlineboutique/shippingservice/ShippingService
-#       - github.com/ServiceWeaver/onlineboutique/adservice/AdService
-#       - github.com/ServiceWeaver/onlineboutique/checkoutservice/CheckoutService
-#       - github.com/ServiceWeaver/onlineboutique/emailservice/EmailService
-#       - github.com/ServiceWeaver/onlineboutique/paymentservice/PaymentService
 #       - github.com/ServiceWeaver/onlineboutique/cartservice/CartService
 #       - github.com/ServiceWeaver/onlineboutique/cartservice/cartCache
-#       - github.com/ServiceWeaver/onlineboutique/currencyservice/CurrencyService
+#       - github.com/ServiceWeaver/onlineboutique/recommendationservice/RecommendationService
+#       - github.com/ServiceWeaver/onlineboutique/shippingservice/ShippingService
+#       - github.com/ServiceWeaver/onlineboutique/paymentservice/PaymentService
 #       - github.com/ServiceWeaver/weaver/Main
+#       - github.com/ServiceWeaver/onlineboutique/adservice/AdService
+#       - github.com/ServiceWeaver/onlineboutique/checkoutservice/CheckoutService
+#       - github.com/ServiceWeaver/onlineboutique/currencyservice/CurrencyService
+#       - github.com/ServiceWeaver/onlineboutique/emailservice/EmailService
 #     - 
 #       - github.com/ServiceWeaver/onlineboutique/productcatalogservice/ProductCatalogService
 #     listeners:
@@ -29,19 +29,19 @@
 #
 # To deploy these resources, run:
 #
-#     kubectl apply -f /tmp/kube_e8df9de0.yaml
+#     kubectl apply -f /tmp/kube_618477ab.yaml
 #
 # To view the deployed resources, run:
 #
-#     kubectl get all,configmaps --selector=serviceweaver/version=e8df9de0
+#     kubectl get all,configmaps --selector=serviceweaver/version=618477ab
 #
 # To view a description of every resource, run:
 #
-#     kubectl get all,configmaps --selector=serviceweaver/version=e8df9de0 -o custom-columns=KIND:.kind,NAME:.metadata.name,APP:.metadata.labels.serviceweaver/app,VERSION:.metadata.labels.serviceweaver/version,DESCRIPTION:.metadata.annotations.description
+#     kubectl get all,configmaps --selector=serviceweaver/version=618477ab -o custom-columns=KIND:.kind,NAME:.metadata.name,APP:.metadata.labels.serviceweaver/app,VERSION:.metadata.labels.serviceweaver/version,DESCRIPTION:.metadata.annotations.description
 #
 # To delete the resources, run:
 #
-#     kubectl delete all,configmaps --selector=serviceweaver/version=e8df9de0
+#     kubectl delete all,configmaps --selector=serviceweaver/version=618477ab
 
 
 # Roles.
@@ -86,38 +86,38 @@ apiVersion: v1
 data:
   config.textpb: |
     namespace: "default"
-    deployment_id: "e8df9de0-ca23-4520-b98b-46ceeb441b27"
+    deployment_id: "618477ab-ea6e-43a6-b73c-308ee2cff1d2"
     listeners: {
       key: "boutique"
       value: 20000
     }
     groups: {
       key: "github.com/ServiceWeaver/onlineboutique/adservice/AdService"
-      value: "ad-ct-co-cur-em-main-pay-rec-sh"
+      value: "ad-ct-co-cur-em-main-pay-re-sh"
     }
     groups: {
       key: "github.com/ServiceWeaver/onlineboutique/cartservice/CartService"
-      value: "ad-ct-co-cur-em-main-pay-rec-sh"
+      value: "ad-ct-co-cur-em-main-pay-re-sh"
     }
     groups: {
       key: "github.com/ServiceWeaver/onlineboutique/cartservice/cartCache"
-      value: "ad-ct-co-cur-em-main-pay-rec-sh"
+      value: "ad-ct-co-cur-em-main-pay-re-sh"
     }
     groups: {
       key: "github.com/ServiceWeaver/onlineboutique/checkoutservice/CheckoutService"
-      value: "ad-ct-co-cur-em-main-pay-rec-sh"
+      value: "ad-ct-co-cur-em-main-pay-re-sh"
     }
     groups: {
       key: "github.com/ServiceWeaver/onlineboutique/currencyservice/CurrencyService"
-      value: "ad-ct-co-cur-em-main-pay-rec-sh"
+      value: "ad-ct-co-cur-em-main-pay-re-sh"
     }
     groups: {
       key: "github.com/ServiceWeaver/onlineboutique/emailservice/EmailService"
-      value: "ad-ct-co-cur-em-main-pay-rec-sh"
+      value: "ad-ct-co-cur-em-main-pay-re-sh"
     }
     groups: {
       key: "github.com/ServiceWeaver/onlineboutique/paymentservice/PaymentService"
-      value: "ad-ct-co-cur-em-main-pay-rec-sh"
+      value: "ad-ct-co-cur-em-main-pay-re-sh"
     }
     groups: {
       key: "github.com/ServiceWeaver/onlineboutique/productcatalogservice/ProductCatalogService"
@@ -125,15 +125,15 @@ data:
     }
     groups: {
       key: "github.com/ServiceWeaver/onlineboutique/recommendationservice/RecommendationService"
-      value: "ad-ct-co-cur-em-main-pay-rec-sh"
+      value: "ad-ct-co-cur-em-main-pay-re-sh"
     }
     groups: {
       key: "github.com/ServiceWeaver/onlineboutique/shippingservice/ShippingService"
-      value: "ad-ct-co-cur-em-main-pay-rec-sh"
+      value: "ad-ct-co-cur-em-main-pay-re-sh"
     }
     groups: {
       key: "github.com/ServiceWeaver/weaver/Main"
-      value: "ad-ct-co-cur-em-main-pay-rec-sh"
+      value: "ad-ct-co-cur-em-main-pay-re-sh"
     }
     telemetry: {
       metrics: {
@@ -160,17 +160,17 @@ kind: ConfigMap
 metadata:
   annotations:
     description: This ConfigMap contains config files for app "onlineboutique" version
-      "e8df9de0".
+      "618477ab".
   creationTimestamp: null
   labels:
     serviceweaver/app: onlineboutique
-    serviceweaver/version: e8df9de0
-  name: config-e8df9de0
+    serviceweaver/version: 618477ab
+  name: config-618477ab
   namespace: default
 
 ---
 
-# Listener Service for group ad-ct-co-cur-em-main-pay-rec-sh
+# Listener Service for group ad-ct-co-cur-em-main-pay-re-sh
 apiVersion: v1
 kind: Service
 metadata:
@@ -180,8 +180,8 @@ metadata:
   labels:
     serviceweaver/app: onlineboutique
     serviceweaver/listener: boutique
-    serviceweaver/version: e8df9de0
-  name: boutique-e8df9de0
+    serviceweaver/version: 618477ab
+  name: boutique-618477ab
   namespace: default
 spec:
   ports:
@@ -189,50 +189,50 @@ spec:
     protocol: TCP
     targetPort: 20000
   selector:
-    serviceweaver/name: onlineboutique-ad-ct-co-cur-em-main-pay-rec-sh-e8df9de0-f03240ce
+    serviceweaver/name: onlineboutique-ad-ct-co-cur-em-main-pay-re-sh-618477ab-e71b85a2
   type: LoadBalancer
 status:
   loadBalancer: {}
 
 ---
 
-# Deployment for group ad-ct-co-cur-em-main-pay-rec-sh
+# Deployment for group ad-ct-co-cur-em-main-pay-re-sh
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    description: This Deployment hosts components github.com/ServiceWeaver/onlineboutique/recommendationservice/RecommendationService,
-      github.com/ServiceWeaver/onlineboutique/shippingservice/ShippingService, github.com/ServiceWeaver/onlineboutique/adservice/AdService,
-      github.com/ServiceWeaver/onlineboutique/checkoutservice/CheckoutService, github.com/ServiceWeaver/onlineboutique/emailservice/EmailService,
-      github.com/ServiceWeaver/onlineboutique/paymentservice/PaymentService, github.com/ServiceWeaver/onlineboutique/cartservice/CartService,
-      github.com/ServiceWeaver/onlineboutique/cartservice/cartCache, github.com/ServiceWeaver/onlineboutique/currencyservice/CurrencyService,
-      github.com/ServiceWeaver/weaver/Main.
+    description: This Deployment hosts components github.com/ServiceWeaver/onlineboutique/cartservice/CartService,
+      github.com/ServiceWeaver/onlineboutique/cartservice/cartCache, github.com/ServiceWeaver/onlineboutique/recommendationservice/RecommendationService,
+      github.com/ServiceWeaver/onlineboutique/shippingservice/ShippingService, github.com/ServiceWeaver/onlineboutique/paymentservice/PaymentService,
+      github.com/ServiceWeaver/weaver/Main, github.com/ServiceWeaver/onlineboutique/adservice/AdService,
+      github.com/ServiceWeaver/onlineboutique/checkoutservice/CheckoutService, github.com/ServiceWeaver/onlineboutique/currencyservice/CurrencyService,
+      github.com/ServiceWeaver/onlineboutique/emailservice/EmailService.
   creationTimestamp: null
   labels:
     serviceweaver/app: onlineboutique
-    serviceweaver/version: e8df9de0
-  name: onlineboutique-ad-ct-co-cur-em-main-pay-rec-sh-e8df9de0-f03240ce
+    serviceweaver/version: 618477ab
+  name: onlineboutique-ad-ct-co-cur-em-main-pay-re-sh-618477ab-e71b85a2
   namespace: default
 spec:
   selector:
     matchLabels:
-      serviceweaver/name: onlineboutique-ad-ct-co-cur-em-main-pay-rec-sh-e8df9de0-f03240ce
+      serviceweaver/name: onlineboutique-ad-ct-co-cur-em-main-pay-re-sh-618477ab-e71b85a2
   strategy: {}
   template:
     metadata:
       annotations:
-        description: This Pod hosts components github.com/ServiceWeaver/onlineboutique/recommendationservice/RecommendationService,
+        description: This Pod hosts components github.com/ServiceWeaver/onlineboutique/cartservice/CartService,
+          github.com/ServiceWeaver/onlineboutique/cartservice/cartCache, github.com/ServiceWeaver/onlineboutique/recommendationservice/RecommendationService,
           github.com/ServiceWeaver/onlineboutique/shippingservice/ShippingService,
+          github.com/ServiceWeaver/onlineboutique/paymentservice/PaymentService, github.com/ServiceWeaver/weaver/Main,
           github.com/ServiceWeaver/onlineboutique/adservice/AdService, github.com/ServiceWeaver/onlineboutique/checkoutservice/CheckoutService,
-          github.com/ServiceWeaver/onlineboutique/emailservice/EmailService, github.com/ServiceWeaver/onlineboutique/paymentservice/PaymentService,
-          github.com/ServiceWeaver/onlineboutique/cartservice/CartService, github.com/ServiceWeaver/onlineboutique/cartservice/cartCache,
           github.com/ServiceWeaver/onlineboutique/currencyservice/CurrencyService,
-          github.com/ServiceWeaver/weaver/Main.
+          github.com/ServiceWeaver/onlineboutique/emailservice/EmailService.
       creationTimestamp: null
       labels:
         serviceweaver/app: onlineboutique
-        serviceweaver/name: onlineboutique-ad-ct-co-cur-em-main-pay-rec-sh-e8df9de0-f03240ce
-        serviceweaver/version: e8df9de0
+        serviceweaver/name: onlineboutique-ad-ct-co-cur-em-main-pay-re-sh-618477ab-e71b85a2
+        serviceweaver/version: 618477ab
       namespace: default
     spec:
       affinity:
@@ -241,7 +241,7 @@ spec:
           - podAffinityTerm:
               labelSelector:
                 matchLabels:
-                  serviceweaver/name: onlineboutique-ad-ct-co-cur-em-main-pay-rec-sh-e8df9de0-f03240ce
+                  serviceweaver/name: onlineboutique-ad-ct-co-cur-em-main-pay-re-sh-618477ab-e71b85a2
               topologyKey: kubernetes.io/hostname
             weight: 100
       containers:
@@ -249,17 +249,17 @@ spec:
         - babysitter
         - /weaver/weaver.toml
         - /weaver/config.textpb
-        - github.com/ServiceWeaver/onlineboutique/recommendationservice/RecommendationService
-        - github.com/ServiceWeaver/onlineboutique/shippingservice/ShippingService
-        - github.com/ServiceWeaver/onlineboutique/adservice/AdService
-        - github.com/ServiceWeaver/onlineboutique/checkoutservice/CheckoutService
-        - github.com/ServiceWeaver/onlineboutique/emailservice/EmailService
-        - github.com/ServiceWeaver/onlineboutique/paymentservice/PaymentService
         - github.com/ServiceWeaver/onlineboutique/cartservice/CartService
         - github.com/ServiceWeaver/onlineboutique/cartservice/cartCache
-        - github.com/ServiceWeaver/onlineboutique/currencyservice/CurrencyService
+        - github.com/ServiceWeaver/onlineboutique/recommendationservice/RecommendationService
+        - github.com/ServiceWeaver/onlineboutique/shippingservice/ShippingService
+        - github.com/ServiceWeaver/onlineboutique/paymentservice/PaymentService
         - github.com/ServiceWeaver/weaver/Main
-        image: docker.io/camilamedeir0s/onlineboutique:e8df9de0
+        - github.com/ServiceWeaver/onlineboutique/adservice/AdService
+        - github.com/ServiceWeaver/onlineboutique/checkoutservice/CheckoutService
+        - github.com/ServiceWeaver/onlineboutique/currencyservice/CurrencyService
+        - github.com/ServiceWeaver/onlineboutique/emailservice/EmailService
+        image: docker.io/camilamedeir0s/onlineboutique:618477ab
         imagePullPolicy: IfNotPresent
         name: serviceweaver
         ports:
@@ -279,24 +279,24 @@ spec:
       serviceAccountName: default
       volumes:
       - configMap:
-          name: config-e8df9de0
+          name: config-618477ab
         name: config
 status: {}
 
 ---
 
-# Autoscaler for group ad-ct-co-cur-em-main-pay-rec-sh
+# Autoscaler for group ad-ct-co-cur-em-main-pay-re-sh
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   annotations:
-    description: This HorizontalPodAutoscaler scales the "onlineboutique-ad-ct-co-cur-em-main-pay-rec-sh-e8df9de0-f03240ce"
+    description: This HorizontalPodAutoscaler scales the "onlineboutique-ad-ct-co-cur-em-main-pay-re-sh-618477ab-e71b85a2"
       Deployment.
   creationTimestamp: null
   labels:
     serviceweaver/app: onlineboutique
-    serviceweaver/version: e8df9de0
-  name: onlineboutique-ad-ct-co-cur-em-main-pay-rec-sh-e8df9de0-f03240ce
+    serviceweaver/version: 618477ab
+  name: onlineboutique-ad-ct-co-cur-em-main-pay-re-sh-618477ab-e71b85a2
   namespace: default
 spec:
   maxReplicas: 10
@@ -311,7 +311,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: onlineboutique-ad-ct-co-cur-em-main-pay-rec-sh-e8df9de0-f03240ce
+    name: onlineboutique-ad-ct-co-cur-em-main-pay-re-sh-618477ab-e71b85a2
 status:
   currentMetrics: null
   desiredReplicas: 0
@@ -327,13 +327,13 @@ metadata:
   creationTimestamp: null
   labels:
     serviceweaver/app: onlineboutique
-    serviceweaver/version: e8df9de0
-  name: onlineboutique-pc-e8df9de0-d07d09ff
+    serviceweaver/version: 618477ab
+  name: onlineboutique-pc-618477ab-0a85caf1
   namespace: default
 spec:
   selector:
     matchLabels:
-      serviceweaver/name: onlineboutique-pc-e8df9de0-d07d09ff
+      serviceweaver/name: onlineboutique-pc-618477ab-0a85caf1
   strategy: {}
   template:
     metadata:
@@ -342,8 +342,8 @@ spec:
       creationTimestamp: null
       labels:
         serviceweaver/app: onlineboutique
-        serviceweaver/name: onlineboutique-pc-e8df9de0-d07d09ff
-        serviceweaver/version: e8df9de0
+        serviceweaver/name: onlineboutique-pc-618477ab-0a85caf1
+        serviceweaver/version: 618477ab
       namespace: default
     spec:
       affinity:
@@ -352,7 +352,7 @@ spec:
           - podAffinityTerm:
               labelSelector:
                 matchLabels:
-                  serviceweaver/name: onlineboutique-pc-e8df9de0-d07d09ff
+                  serviceweaver/name: onlineboutique-pc-618477ab-0a85caf1
               topologyKey: kubernetes.io/hostname
             weight: 100
       containers:
@@ -361,7 +361,7 @@ spec:
         - /weaver/weaver.toml
         - /weaver/config.textpb
         - github.com/ServiceWeaver/onlineboutique/productcatalogservice/ProductCatalogService
-        image: docker.io/camilamedeir0s/onlineboutique:e8df9de0
+        image: docker.io/camilamedeir0s/onlineboutique:618477ab
         imagePullPolicy: IfNotPresent
         name: serviceweaver
         resources: {}
@@ -378,7 +378,7 @@ spec:
       serviceAccountName: default
       volumes:
       - configMap:
-          name: config-e8df9de0
+          name: config-618477ab
         name: config
 status: {}
 
@@ -389,13 +389,13 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   annotations:
-    description: This HorizontalPodAutoscaler scales the "onlineboutique-pc-e8df9de0-d07d09ff"
+    description: This HorizontalPodAutoscaler scales the "onlineboutique-pc-618477ab-0a85caf1"
       Deployment.
   creationTimestamp: null
   labels:
     serviceweaver/app: onlineboutique
-    serviceweaver/version: e8df9de0
-  name: onlineboutique-pc-e8df9de0-d07d09ff
+    serviceweaver/version: 618477ab
+  name: onlineboutique-pc-618477ab-0a85caf1
   namespace: default
 spec:
   maxReplicas: 10
@@ -410,7 +410,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: onlineboutique-pc-e8df9de0-d07d09ff
+    name: onlineboutique-pc-618477ab-0a85caf1
 status:
   currentMetrics: null
   desiredReplicas: 0
