@@ -1,0 +1,158 @@
+resources:
+- ad_cart_checkout_currency-main-productcat-recommendation_email_payment_shipping.yaml
+patches:
+- target:
+    kind: HorizontalPodAutoscaler
+  patch: |
+    $patch: delete
+    apiVersion: autoscaling/v2
+    kind: HorizontalPodAutoscaler
+    metadata:
+      name: dummy
+- target:
+    kind: Deployment
+    name: onlineboutique-ad-14820cc4-0d593d95
+  patch: |
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: onlineboutique-ad-14820cc4-0d593d95
+    spec:
+      template:
+        spec:
+          containers:
+            - name: serviceweaver
+              $patch: merge
+              resources:
+                limits:
+                  cpu: "117m"
+                  memory: "117Mi"
+                requests:
+                  cpu: "117m"
+                  memory: "117Mi"
+- target:
+    kind: Deployment
+    name: onlineboutique-co-14820cc4-0242b4d2
+  patch: |
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: onlineboutique-co-14820cc4-0242b4d2
+    spec:
+      template:
+        spec:
+          containers:
+            - name: serviceweaver
+              $patch: merge
+              resources:
+                limits:
+                  cpu: "75m"
+                  memory: "75Mi"
+                requests:
+                  cpu: "75m"
+                  memory: "75Mi"
+- target:
+    kind: Deployment
+    name: onlineboutique-ct-14820cc4-a46276af
+  patch: |
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: onlineboutique-ct-14820cc4-a46276af
+    spec:
+      template:
+        spec:
+          containers:
+            - name: serviceweaver
+              $patch: merge
+              resources:
+                limits:
+                  cpu: "195m"
+                  memory: "195Mi"
+                requests:
+                  cpu: "195m"
+                  memory: "195Mi"
+- target:
+    kind: Deployment
+    name: onlineboutique-cur-main-pc-rec-14820cc4-164fb1c2
+  patch: |
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: onlineboutique-cur-main-pc-rec-14820cc4-164fb1c2
+    spec:
+      template:
+        spec:
+          containers:
+            - name: serviceweaver
+              $patch: merge
+              resources:
+                limits:
+                  cpu: "1413m"
+                  memory: "1413Mi"
+                requests:
+                  cpu: "1413m"
+                  memory: "1413Mi"
+- target:
+    kind: Deployment
+    name: onlineboutique-em-14820cc4-e3122515
+  patch: |
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: onlineboutique-em-14820cc4-e3122515
+    spec:
+      template:
+        spec:
+          containers:
+            - name: serviceweaver
+              $patch: merge
+              resources:
+                limits:
+                  cpu: "50m"
+                  memory: "50Mi"
+                requests:
+                  cpu: "50m"
+                  memory: "50Mi"
+- target:
+    kind: Deployment
+    name: onlineboutique-pay-14820cc4-22d488a6
+  patch: |
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: onlineboutique-pay-14820cc4-22d488a6
+    spec:
+      template:
+        spec:
+          containers:
+            - name: serviceweaver
+              $patch: merge
+              resources:
+                limits:
+                  cpu: "35m"
+                  memory: "35Mi"
+                requests:
+                  cpu: "35m"
+                  memory: "35Mi"
+- target:
+    kind: Deployment
+    name: onlineboutique-sh-14820cc4-9354ede3
+  patch: |
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: onlineboutique-sh-14820cc4-9354ede3
+    spec:
+      template:
+        spec:
+          containers:
+            - name: serviceweaver
+              $patch: merge
+              resources:
+                limits:
+                  cpu: "115m"
+                  memory: "115Mi"
+                requests:
+                  cpu: "115m"
+                  memory: "115Mi"
